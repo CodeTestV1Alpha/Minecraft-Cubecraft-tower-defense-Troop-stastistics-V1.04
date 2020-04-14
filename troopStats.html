@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+font-family:minecraft;
+font-size:24px;
+background-size: 100% 100%;
+background-repeat: no-repeat;
+background-attachment:fixed;
+}
+h1,p,.huge {
+font-size:48px;
+}
+table,th,td {
+border: 1px solid black;
+text-align: center;
+}
+table {
+border-collapse: collapse;
+width:100%;
+}
+tr:nth-child(odd) {
+background: rgba(6,78,241,0.31);
+}
+tr:nth-child(even) {
+background: rgba(252,244,38,0.31);
+}
+img {
+width:70px;
+height:70px;
+}
+.minecraft {
+font-family:minecraft;
+}
+.regular {
+font-size:24px;
+}
+.small {
+font-size:18px;
+}
+.tiny {
+font-size:12px;
+}
+.switch {
+text-align:right;
+font-size:18px;
+color:#73ff30;
+}
+.invisible {
+display:none;
+}
+.troopHead {
+width:48px;
+margin-bottom: -15px;
+}
+.inline {
+display:inline;
+}
+/*Color section*/
+.purple {
+color:#9512fd;
+}
+.magenta {
+color:#cd53fb;
+}
+.blue {
+color:#064ef1;
+}
+.aqua {
+color:#1afefb;
+}
+.green {
+color:#73ff30;
+}
+.yellow {
+color:#fcf426;
+}
+.orange {
+color:#f98308;
+}
+.red {
+color:#f83a3a;
+}
+.pink {
+color:#ff62a7;
+}
+.brown {
+color:#c6600a;
+}
+.white {
+color:#fff;
+}
+.gray {
+color:#808080;
+}
+.black {
+color:#000;
+}
+/*Color section end*/
+#idk {
+text-align:right;
+font-size:18px;
+color:#cd53fb;
+}
+#giantHead {
+width:100px;
+height:100px;
+}
+</style>
+<head>
+<title>Cubecraft TowerDefense Troop Statistics V1.04</title>
+</head>
+<body id="background">
+<div id="statisticsPage">
+<h1>Cubecraft tower defense troop stats V1.04
+<span class="switch" onclick="backgroundPage();">[Switch background]
+</span>
+</h1>
+<p class="regular">Double income: <span id="doubleIncomeOption" onclick="doubleIncome();" class="red">Off</span></p>
+<p class="regular">Gamemode:<canvas id="canvas" width="200" height="25" onclick="gamemodeSwitch();"></canvas></p>
+<!--Statistics page-->
+<p>
+<img id="zombieHead">
+<label for="zombieLvl">Zombie Lv:</label>
+<select id="zombieLvl" class="minecraft regular troopHead">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+</p>
+<table id="tableZombie">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of full wave</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>40</td><td>15</td><td>180</td><td>0.4667</td><td>7</td><td>84</td><td>N/A</td><td>978</td>
+</tr>
+<tr>
+<td>2</td><td>56</td><td>18</td><td>216</td><td>0.5</td><td>9</td><td>108</td><td>88</td><td>890</td>
+</tr>
+<tr>
+<td>3</td><td>78</td><td>22</td><td>264</td><td>0.4545</td><td>10</td><td>120</td><td>153</td><td>737</td>
+</tr>
+<tr>
+<td>4</td><td>110</td><td>26</td><td>312</td><td>0.5</td><td>13</td><td>156</td><td>268</td><td>469</td>
+</tr>
+<tr>
+<td>5</td><td>154</td><td>31</td><td>372</td><td>0.4839</td><td>15</td><td>180</td><td>469</td><td>0</td>
+</tr>
+</table>
+
+<p>
+<img id="spiderHead">
+<label for="spiderLvl">Spider Lv:
+</label>
+<select class="minecraft regular troopHead" id="spiderLvl">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+</p>
+<table id="tableSpider">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of full wave</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>80</td><td>25</td><td>300</td><td>0.6</td><td>15</td><td>180</td><td>100</td><td>1955</td>
+</tr>
+<tr>
+<td>2</td><td>112</td><td>30</td><td>360</td><td>0.5333</td><td>16</td><td>192</td><td>175</td><td>1780</td>
+</tr>
+<tr>
+<td>3</td><td>157</td><td>36</td><td>432</td><td>0.5</td><td>18</td><td>216</td><td>306</td><td>1244</td>
+</tr>
+<tr>
+<td>4</td><td>222</td><td>43</td><td>516</td><td>0.4</td><td>19</td><td>228</td><td>536</td><td>938</td>
+</tr>
+<tr>
+<td>5</td><td>307</td><td>52</td><td>624</td><td>0.4231</td><td>22</td><td>264</td><td>938</td><td>0</td>
+</tr>
+</table>
+
+<p><img id="skeletonHead">
+<label for="skeletonLvl">Skeleton Lv:</label>
+<select class="minecraft regular troopHead" id="skeletonLvl">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+</p>
+<table id="tableSkeleton">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of full wave</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>350</td><td>120</td><td>1440</td><td>0.25</td><td>30</td><td>360</td><td>200</td><td>3911</td>
+</tr>
+<tr>
+<td>2</td><td>490</td><td>144</td><td>1728</td><td>0.2292</td><td>33</td><td>396</td><td>350</td><td>3561</td>
+</tr>
+<tr>
+<td>3</td><td>686</td><td>173</td><td>2076</td><td>0.2081</td><td>36</td><td>432</td><td>613</td><td>2948</td>
+</tr>
+<tr>
+<td>4</td><td>960</td><td>207</td><td>2484</td><td>0.1932</td><td>40</td><td>480</td><td>1072</td><td>1876</td>
+</tr>
+<tr>
+<td>5</td><td>1345</td><td>249</td><td>2988</td><td>0.1727</td><td>43</td><td>516</td><td>1876</td><td>0</td>
+</tr>
+</table>
+
+<p><img src="https://minecraft-heads.com/media/k2/items/cache/144aba6c568fde2fce1a77afef2ebf5c_Generic.jpg">Zombie pigmen
+</p>
+<table id="tablePigmen">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of full wave</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>150</td><td>100</td><td>1200</td><td>0.22</td><td>22</td><td>264</td><td>150</td><td>2933</td>
+</tr>
+<tr>
+<td>2</td><td>219</td><td>120</td><td>1440</td><td>0.2</td><td>24</td><td>288</td><td>263</td><td>2670</td>
+</tr>
+<tr>
+<td>3</td><td>297</td><td>144</td><td>1728</td><td>0.1736</td><td>25</td><td>400</td><td>459</td><td>2211</td>
+</tr>
+<tr>
+<td>4</td><td>412</td><td>173</td><td>2076</td><td>0.1445</td><td>25</td><td>400</td><td>804</td><td>1407</td>
+</tr>
+<tr>
+<td>5</td><td>576</td><td>207</td><td>2484</td><td>0.1304</td><td>27</td><td>324</td><td>1407</td><td>0</td>
+</tr>
+</table>
+
+<p><img id="creeperHead">
+<label for="creeperLvl">Creeper <span class="invisible">(Aw man)</span>
+<!--By the way you shouldn't have seen "(Aw man)"
+Tell me if you see this.-->
+Lv:</label>
+<select class="minecraft regular troopHead" id="creeperLvl">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+</p>
+<table id="tableCreeper">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of full wave</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>450</td><td>300</td><td>3600</td><td>0.15</td><td>45</td><td>540</td><td>300</td><td>5866</td>
+</tr>
+<tr>
+<td>2</td><td>630</td><td>360</td><td>4320</td><td>0.1361</td><td>49</td><td>588</td><td>525</td><td>5341</td>
+</tr>
+<tr>
+<td>3</td><td>882</td><td>432</td><td>5184</td><td>0.125</td><td>54</td><td>648</td><td>919</td><td>4422</td>
+</tr>
+<tr>
+<td>4</td><td>1235</td><td>518</td><td>6216</td><td>0.1158</td><td>60</td><td>720</td><td>1608</td><td>2814</td>
+</tr>
+<tr>
+<td>5</td><td>1729</td><td>622</td><td>7464</td><td>0.1061</td><td>66</td><td>742</td><td>2814</td><td>0</td>
+</tr>
+</table>
+
+<p><img id="silverfishHead">
+<label for="silverfishLvl">Silverfish Lv: </label><select class="minecraft regular troopHead" id="silverfishLvl">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+</p>
+<table id="tableSilverfish">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of dozen</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>180</td><td>80</td><td>960</td><td>0.225</td><td>18</td><td>216</td><td>150</td><td>2933</td>
+</tr>
+<tr>
+<td>2</td><td>252</td><td>96</td><td>1152</td><td>0.1979</td><td>19</td><td>228</td><td>263</td><td>2670</td>
+</tr>
+<tr>
+<td>3</td><td>353</td><td>115</td><td>1380</td><td>0.1652</td><td>19</td><td>228</td><td>459</td><td>2211</td>
+</tr>
+<tr>
+<td>4</td><td>494</td><td>138</td><td>1656</td><td>0.1522</td><td>21</td><td>252</td><td>804</td><td>1407</td>
+</tr>
+<tr>
+<td>5</td><td>691</td><td>166</td><td>1992</td><td>0.1325</td><td>22</td><td>264</td><td>1407</td><td>0</td>
+</tr>
+</table>
+
+<p><img src="https://minecraft-heads.com/media/k2/items/cache/b42628f79a294675b36162209f86e045_XS.jpg">
+Blaze</p>
+<table id="tableBlaze">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of full wave</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>410</td><td>500</td><td>6000</td><td>0.21</td><td>105</td><td>1260</td><td>500</td><td>9775</td>
+</tr>
+<tr>
+<td>2</td><td>574</td><td>600</td><td>7200</td><td>0.185</td><td>111</td><td>1332</td><td>875</td><td>8900</td>
+</tr>
+<tr>
+<td>3</td><td>804</td><td>720</td><td>8640</td><td>0.1597</td><td>115</td><td>1380</td><td>1531</td><td>7369</td>
+</tr>
+<tr>
+<td>4</td><td>1125</td><td>864</td><td>10368</td><td>0.14</td><td>121</td><td>1452</td><td>2680</td><td>4689</td>
+</tr>
+<tr>
+<td>5</td><td>1575</td><td>1037</td><td>12444</td><td>0.1225</td><td>127</td><td>1524</td><td>4689</td><td>0</td>
+</tr>
+</table>
+
+<p><img src="https://minecraft-heads.com/media/k2/items/cache/b530b29364dc197ef695fa1cde29db91_XS.jpg">
+Witch</p>
+<table id="tableWitch">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of full wave</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Heal per second</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>300</td><td>150</td><td>1800</td><td>0.2467</td><td>37</td><td>444</td><td>4</td><td>250</td><td>4889</td>
+</tr>
+<tr>
+<td>2</td><td>420</td><td>165</td><td>1980</td><td>0.2364</td><td>39</td><td>468</td><td>5</td><td>438</td><td>4451</td>
+</tr>
+<tr>
+<td>3</td><td>588</td><td>182</td><td>2184</td><td>0.2308</td><td>42</td><td>504</td><td>6</td><td>766</td><td>3685</td>
+</tr>
+<tr>
+<td>4</td><td>823</td><td>200</td><td>2400</td><td>0.215</td><td>43</td><td>516</td><td>7</td><td>1340</td><td>2345</td>
+</tr>
+<tr>
+<td>5</td><td>1152</td><td>220</td><td>2640</td><td>0.2045</td><td>45</td><td>540</td><td>TBA</td><td>2345</td><td>0</td>
+</tr>
+</table>
+
+<p><img id="slimeHead">
+<label for="slimeLvl">Slime Lv: </label><select class="minecraft regular troopHead" id="slimeLvl">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+</p>
+<table id="tableSlime">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of full wave</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>800</td><td>1500</td><td>18000</td><td>0.1</td><td>150</td><td>1800</td><td>1000</td><td>19551</td>
+</tr>
+<tr>
+<td>2</td><td>880</td><td>1800</td><td>21600</td><td>0.0872</td><td>157</td><td>1884</td><td>1750</td><td>17801</td>
+</tr>
+<tr>
+<td>3</td><td>968</td><td>2160</td><td>25920</td><td>0.0764</td><td>165</td><td>1980</td><td>3063</td><td>14738</td>
+</tr>
+<tr>
+<td>4</td><td>1065</td><td>2592</td><td>31104</td><td>0.0671</td><td>174</td><td>2088</td><td>5359</td><td>9379</td>
+</tr>
+<tr>
+<td>5</td><td>1171</td><td>3110</td><td>37320</td><td>0.0588</td><td>183</td><td>2196</td><td>9379</td><td>0</td>
+</tr>
+</table>
+
+<p><img id="giantHead">
+<label for="giantLvl">Giant Lv: </label><select class="minecraft regular troopHead" id="giantLvl">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+</p>
+<table id="tableGiant">
+<tr>
+<th>Lv\Stats</th>
+<th>Health</th>
+<th>Training cost</th>
+<th>Training cost of full wave</th>
+<th>Ratio of xp per coin</th>
+<th>XP reward</th>
+<th>XP reward of full wave</th>
+<th>Upgrade cost</th>
+<th>XP needed from this level to lv5</th>
+</tr>
+<tr>
+<td>1</td><td>3000</td><td>5000</td><td>60000</td><td>0.0768</td><td>384</td><td>2808</td><td>3000</td><td>58653</td>
+</tr>
+<tr>
+<td>2</td><td>4200</td><td>5750</td><td>69000</td><td>0.072</td><td>420</td><td>4968</td><td>9188</td><td>53403</td>
+</tr>
+<tr>
+<td>3</td><td>5880</td><td>6613</td><td>79356</td><td>0.0653</td><td>444</td><td>5184</td><td>9188</td><td>44215</td>
+</tr>
+<tr>
+<td>4</td><td>8232</td><td>7604</td><td>91248</td><td>0.0623</td><td>492</td><td>5688</td><td>16078</td><td>28137</td>
+</tr>
+<tr>
+<td>5</td><td>11525</td><td>8745</td><td>104940</td><td>0.0576</td><td>528</td><td>6048</td><td>28137</td><td>0</td>
+</tr>
+</table>
+<strong>Notes:</strong>
+<div style="font-size:18px; color:#1afefb">
+<ol>
+<li>Unfortunately, this table won't provide giant's "self-regeneration" statistic</li>
+<li>Creeper's "self-regeneration" statistic will be added in later update if sufficient data is gathered</li>
+<li>Xp to lv5 needed exclude unlock cost. To see the xp cost of unlock to lv5, add "Upgrade cost" of lv 1 and "XP to lv5 needed" of lv 1 together</li>
+<li>This table don't provide upgrade cost from lv 1 to non-lv5. To see the upgrade cost, subtract total cost of level(s) you don't want to upgrade from "XP to level 5 needed" of your current level</li>
+<li>Unfortunately, the statistic of split-slime is also not provided</li>
+<li>Level of the zombie summoned from giant is corresponding to giant's level</li>
+<li>Witch's "heal per second" statistics is incomplete, please contact me to provide more info</li>
+<div class="red">
+<li>In background image settings, image <span class="green">Nature</span> cannot display properly therefore I disabled that option</li>
+<li>Please contact me without hesitation if see any problem or have idea for improvement.</li>
+<li style="opacity:0.05">1.05 update: Sound and music, play the music with the game!</li>
+</div>
+</ol>
+<br>
+<strong class="magenta">Updates:</strong>
+<p class="regular">Added:</p>
+<ol class="small">
+<li>Statistics table of survival mode</li>
+<li>Statistics of witch "Heal per second" of lv1 to lv4</li>
+</ol>
+<p class="regular">Fixed:</p>
+<ol>
+<li>XP reward, ratio of xp/coin and xp reward of dozen for creeper, silverfish, blaze, witch, slime and giant is doubled in single income and quadrupled in double income</li>
+<li>XP reward now also count 12 zombies spawned upon giant's death, this also affected xp reward of dozen and xp/coin ratio</li>
+<li>Changed "Training cost for dozen" into "Training cost of full wave". A full wave is 12 in normal mode while 5 in survival mode.</li>
+<li>Changed "XP reward for dozen" into "XP reward of full wave". A full wave is 12 in normal mode while 5 in survival mode.</li>
+<li>XP needed of giant lv 3 to lv5 is same as lv 2 to lv5</li>
+</ol>
+</div>
+</div>
+
+<!-- Background page-->
+<div class="invisible" id="backgroundPage">
+<h1>Background settings <span class="switch" onclick="statisticsPage();">[Statistics page]</span></h1>
+<div class="regular">
+<label for="mapChosen">Change the background (Tower defense map):</label>
+<select id="mapChosen" class="minecraft">
+<option>Blank</option>
+<option>Barren</option>
+<option>Candy</option>
+<option>Cave crawl</option>
+<option>Demons</option>
+<option>Desert</option>
+<option>High hills</option>
+<option>Valley</option>
+<option>Hillside</option>
+<option disabled>Nature</option>
+<option>Pandora falls</option>
+<option>Perilous</option>
+<option>Portals</option>
+<option>Space</option>
+<option>Java 1.11</option>
+<option>Java 1.12</option>
+<option>Java 1.13</option>
+<option>Java 1.14</option>
+<option>Java 1.15</option>
+<option disabled>Java 1.16</option>
+<option>Custom</option>
+</select>
+<div id="customImage" class="invisible">
+<p class="regular">Insert url to set your own background image:</p>
+<input id="customBackground" style="width:80%"><button onclick="customBackgroundSet();">Confirm</button>
+<abbr title='Insert the URL (Universal Resource Locator) in the bar and click "confirm" to set background Image.
+Not working? Besure you put the correct URL and check again.'><br>[Help]</abbr>
+</div>
+<p>Other style settings</p>
+<div class="regular">
+<label for="textColor">Text color:</label>
+<select id="textColor" class="minecraft">
+<option>black</option>
+<option class="red">red</option>
+<option class="orange">orange</option>
+<option class="yellow">yellow</option>
+<option class="green">green</option>
+<option class="aqua">aqua</option>
+<option class="blue">blue</option>
+<option class="purple">purple</option>
+<option class="magenta">magenta</option>
+<option class="brown">brown</option>
+<option class="white">white</option>
+<option class="gray">gray</option>
+<option>custom</option>
+</select>
+<div id="customColorSettings" class="invisible">
+<p class="regular">Input your own color:
+<input id="customColor"><button onclick="customColorSet();">Confirm</button></p>
+<abbr title='1: Add a hashtag "#" as the first character to use Hex instead
+2: Any color name that is supported by CSS is supported and available
+3: If you want to use your own color beside both mentioned above, please use format "rgb(Red,Green,Blue)".
+Either "Red", "Green" or "Blue" cannot be non-number, or integer number below 0 or exceed 255.'>[Help]</abbr>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+var doubleIncomeBoolean = false;
+var canvas = document.getElementById("canvas");
+var gamemode = "Normal";
+var ctx = canvas.getContext("2d");
+var dbl = 1;
+/*Function area below
+Areas above this comment is used for global variables
+and specified settings*/
+
+setInterval(function(){
+backgroundSet();
+headSet();
+textColorSet();
+}, 200)
+
+setInterval(function(){
+fullWave();
+}, 1000)
+
+function backgroundPage() {
+document.getElementById("statisticsPage").style.display = "none";
+document.getElementById("backgroundPage").style.display = "block";
+}
+
+function statisticsPage() {
+document.getElementById("statisticsPage").style.display = "block";
+document.getElementById("backgroundPage").style.display = "none";
+}
+
+function customColorSet() {
+var customColor = document.getElementById("customColor").value;
+document.getElementById("statisticsPage").style.color = customColor;
+document.getElementById("backgroundPage").style.color = customColor;
+}
+
+function customBackgroundSet() {
+var customBackground = document.getElementById("customBackground").value
+document.getElementById("background").style.backgroundImage = 'url("' + customBackground + '")'
+}
+
+function backgroundSet() {
+var background = document.getElementById("mapChosen").value
+if (background == "Custom") {
+document.getElementById("customImage").style.display = "block";
+} else {
+document.getElementById("customImage").style.display = "none";
+switch (background) {
+case "Barren":
+background = 'url("https://www.cubecraft.net/attachments/barrenforums-jpg.136358/")';
+break;
+case "Candy":
+background = 'url("https://www.cubecraft.net/attachments/candy-png.151615/")';
+break;
+case "Cave crawl":
+background = 'url("https://www.cubecraft.net/proxy.php?image=https%3A%2F%2Fmedia.discordapp.net%2Fattachments%2F392367040167673856%2F543761733207195649%2F2019-02-09_12.54.30.png%3Fwidth%3D814%26height%3D432&hash=42e5af57efac390e93295b63436f8913")';
+break;
+case "Demons":
+background = 'url("https://www.cubecraft.net/attachments/demons-jpg.151616/")';
+break;
+case "Desert":
+background = 'url("https://www.cubecraft.net/attachments/deserttdforums-jpg.136355/")';
+break;
+case "High hills":
+background = 'url("https://www.cubecraft.net/attachments/high-hills-jpg.151368/")';
+break;
+case "Valley":
+background = 'url("https://www.cubecraft.net/proxy.php?image=https%3A%2F%2Fmedia.discordapp.net%2Fattachments%2F543477775215099924%2F543809757220438057%2F2019-02-09_16.04.29.png%3Fwidth%3D766%26height%3D431&hash=3f2d0c6d2cc6c28278d71a8aec159831")';
+break;
+case "Hillside":
+background = 'url("https://www.cubecraft.net/attachments/hillside-jpg.151617/")';
+break;
+case "Nature":
+background = 'url("https://www.cubecraft.net/attachments/naturetdforums-jpg.136353/")'
+case "Pandora falls":
+background = 'url("https://www.cubecraft.net/attachments/pandora-falls-jpg.151369/")';
+break;
+case "Perilous":
+background = 'url("https://www.cubecraft.net/proxy.php?image=https%3A%2F%2Fmedia.discordapp.net%2Fattachments%2F392367040167673856%2F543764680036974592%2F2019-02-09_13.06.03.png%3Fwidth%3D814%26height%3D432&hash=b95b6994ce4cc000e6df5871f5a8920f")';
+break;
+case "Portals":
+background = 'url("https://www.cubecraft.net/attachments/portal-jpg.151618/")';
+break;
+case "Space":
+background = 'url("https://www.cubecraft.net/attachments/space-jpg.151619/")';
+break;
+case "Java 1.11":
+background = 'url("https://gamepedia.cursecdn.com/minecraft_gamepedia/b/b8/Exploration_Update_Artwork.jpeg?version=90134eb626f8404148214e58cb4d6195")';
+break;
+case "Java 1.12":
+background = 'url("https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/5/58/World_of_Color_Update.png/800px-World_of_Color_Update.png?version=5e1a468cc81ed61e38c6f7550706f0ac")';
+break;
+case "Java 1.13":
+background = 'url("https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/2/26/Update_Aquatic.jpeg/800px-Update_Aquatic.jpeg?version=5eec936998ff08f06ecf726b413b0a18")'
+break;
+case "Java 1.14":
+background = 'url("https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/5/5e/Village_and_Pillage_banner.png/800px-Village_and_Pillage_banner.png?version=3cdf1189a89df4912bf553a2c44c9891")'
+break;
+case "Java 1.15":
+background = 'url("https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/4/44/BuzzyBeesArtwork.jpg/800px-BuzzyBeesArtwork.jpg?version=e5969809b24809f8e18564f90782ecc7")'
+break;
+default:
+background = "none";
+/*Used to prevent error that may cause map shown incorrectly or generate errors.
+If none of those happens, the background image is blank*/
+}
+document.getElementById("background").style.backgroundImage = background;
+}
+}
+
+function headSet() {
+zombieHeadSet();
+spiderHeadSet();
+skeletonHeadSet();
+creeperHeadSet();
+silverfishHeadSet();
+slimeHeadSet();
+giantHeadSet();
+}
+
+function zombieHeadSet() {
+var zombieLvl = document.getElementById("zombieLvl").value
+var zombieHead;
+switch (zombieLvl) {
+case "1":
+zombieHead = "https://minecraft-heads.com/media/k2/items/cache/8cdfe61457f16442e8acf54df5822c40_Generic.jpg"
+break;
+case "2":
+zombieHead = "https://i.imgur.com/kKE0RKI.jpg"
+break;
+case "3":
+zombieHead = "https://minecraft-heads.com/media/k2/items/cache/dc51c42718bbe9e032d817525e51abf5_Generic.jpg"
+break;
+case "4":
+zombieHead = "https://minecraft-heads.com/media/k2/items/cache/19622ae3f5ed382fbb5b4dfdeef97a96_Generic.jpg"
+break;
+case "5":
+zombieHead = "https://minecraft-heads.com/media/k2/items/cache/8e34bfcc69fa38d8648aa5cb9dae8b91_Generic.jpg"
+break;
+}
+document.getElementById("zombieHead").src = zombieHead;
+}
+
+function spiderHeadSet() {
+var spiderLvl = document.getElementById("spiderLvl").value
+var spiderHead;
+switch (spiderLvl) {
+case "1":
+case "2":
+spiderHead = "https://minecraft-heads.com/media/k2/items/cache/c987a1b31fd3f1f08322280ca0954f48_Generic.jpg"
+break;
+case "3":
+spiderHead = "https://minecraft-heads.com/media/k2/items/cache/d9e2e6162e41d072e88d6ff71046b045_Generic.jpg"
+break;
+case "4":
+case "5":
+spiderHead = "https://i.imgur.com/YvzZmJK.png";
+}
+document.getElementById("spiderHead").src = spiderHead;
+}
+
+function skeletonHeadSet() {
+var skeletonLvl = document.getElementById("skeletonLvl").value
+var skeletonHead;
+if (skeletonLvl < 4) {
+skeletonHead = "https://minecraft-heads.com/media/k2/items/cache/c8707fe0c2f842fa41ad2029169e3ecb_Generic.jpg"
+} else {
+skeletonHead = "https://minecraft-heads.com/media/k2/items/cache/148d00c091feb7aa21cfa9eac9ac66f6_Generic.jpg"
+}
+document.getElementById("skeletonHead").src = skeletonHead;
+}
+
+function creeperHeadSet() {
+var creeperLvl = document.getElementById("creeperLvl").value
+var creeperHead;
+if (creeperLvl == 5) {
+creeperHead = "https://minecraft-heads.com/media/k2/items/cache/a540b2ab34d393970e781d799320d67c_Generic.jpg";
+} else {
+creeperHead = "https://minecraft-heads.com/media/k2/items/cache/670a551652ad7bb3913c64d9f97e24df_Generic.jpg";
+}
+document.getElementById("creeperHead").src = creeperHead;
+}
+
+function silverfishHeadSet() {
+var silverfishLvl = document.getElementById("silverfishLvl").value;
+var silverfishHead;
+if (silverfishLvl > 3) {
+silverfishHead = "https://minecraft-heads.com/media/k2/items/cache/9b0efa29a74203dd074a106d29e44ffc_XS.jpg"
+} else {
+silverfishHead = "https://minecraft-heads.com/media/k2/items/cache/44359994484f5fab27c5151b0fc3de0b_XS.jpg"
+}
+document.getElementById("silverfishHead").src = silverfishHead;
+}
+
+function slimeHeadSet() {
+var slimeLvl = document.getElementById("slimeLvl").value
+var slimeHead;
+if (slimeLvl < 4) {
+slimeHead = "https://minecraft-heads.com/media/k2/items/cache/644b96df65b0f30efe263f954f64279a_XS.jpg"
+} else {
+slimeHead = "https://minecraft-heads.com/media/k2/items/cache/4e0d2946bafc44e656cf2886c0b75bb2_XS.jpg"
+}
+document.getElementById("slimeHead").src = slimeHead;
+}
+
+function giantHeadSet () {
+var giantLvl = document.getElementById("giantLvl").value;
+var giantHead;
+switch (giantLvl) {
+case "1":
+giantHead = "https://minecraft-heads.com/media/k2/items/cache/8cdfe61457f16442e8acf54df5822c40_Generic.jpg"
+break;
+case "2":
+giantHead = "https://i.imgur.com/kKE0RKI.jpg"
+break;
+case "3":
+giantHead = "https://minecraft-heads.com/media/k2/items/cache/dc51c42718bbe9e032d817525e51abf5_Generic.jpg"
+break;
+case "4":
+giantHead = "https://minecraft-heads.com/media/k2/items/cache/19622ae3f5ed382fbb5b4dfdeef97a96_Generic.jpg"
+break;
+case "5":
+giantHead = "https://minecraft-heads.com/media/k2/items/cache/8e34bfcc69fa38d8648aa5cb9dae8b91_Generic.jpg"
+break;
+}
+document.getElementById("giantHead").src = giantHead;
+}
+
+function textColorSet() {
+var textColor = document.getElementById("textColor").value
+var color;
+if (textColor == "custom") {
+document.getElementById("customColorSettings").style.display = "block";
+} else {
+document.getElementById("customColorSettings").style.display = "none";
+switch (textColor) {
+case "black":
+color = "#000";
+break;
+case "red":
+color = "#f83a3a";
+break;
+case "orange":
+color = "#f98308";
+break;
+case "yellow":
+color = "#fcf426";
+break;
+case "green":
+color = "#73ff30";
+break;
+case "aqua":
+color = "#1afefb";
+break;
+case "blue":
+color = "#064ef1";
+break;
+case "purple":
+color = "#9512fd";
+break;
+case "magenta":
+color = "#cd53fb";
+break;
+case "brown":
+color = "#c6600a";
+break;
+case "white":
+color = "#fff";
+break;
+case "gray":
+color = "#808080";
+break;
+default:
+color = "black"
+}
+document.getElementById("statisticsPage").style.color = color;
+document.getElementById("backgroundPage").style.color = color;
+}
+}
+
+function doubleIncome() {
+if (doubleIncomeBoolean === false) {
+doubleIncomeBoolean = true;
+document.getElementById("doubleIncomeOption").style.color = "#73ff30";
+document.getElementById("doubleIncomeOption").innerHTML = "On";
+doubleIncomeOn();
+} else {
+doubleIncomeBoolean = false;
+document.getElementById("doubleIncomeOption").style.color = "#f83a3a";
+document.getElementById("doubleIncomeOption").innerHTML = "Off";
+doubleIncomeOff();
+}
+return doubleIncomeBoolean;
+}
+
+ctx.fillStyle = "#333";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle = "#bbb"
+ctx.fillRect(canvas.width / 2,0,canvas.width / 2,25);
+ctx.font = "21px minecraft";
+ctx.fillStyle = "#1afefb";
+ctx.fillText("Normal", 16, 19);
+function gamemodeSwitch() {
+if (gamemode == "Survival") {
+widthStart = 0;
+ctx.fillStyle= "#333";
+ctx.fillRect(widthStart,0,canvas.width / 2,25);
+ctx.fillStyle = "#bbb";
+ctx.fillRect(canvas.width / 2,0,canvas.width / 2,25);
+ctx.font = "21px minecraft";
+ctx.fillStyle = "#1afefb";
+ctx.fillText("Normal", 16, 19);
+survivalOff();
+return gamemode = "Normal";
+} else { //else statement is to handle if gamemode is Normal
+widthStart = canvas.width / 2;
+ctx.fillStyle = "#333";
+ctx.fillRect(widthStart,0,canvas.width / 2,25);
+ctx.fillStyle = "#bbb";
+ctx.fillRect(0,0,canvas.width / 2,25);
+ctx.font = "21px minecraft";
+ctx.fillStyle = "#f98308";
+ctx.fillText("Survival", 106, 19);
+survivalOn();
+return gamemode = "Survival"
+}
+}
+
+function fullWave() {
+var fw; //Full Wave. 12 in normal while 5 in survival
+if (gamemode == "Survival") {
+fw = 5;
+} else { //Default setting, if gamemode is NOT Survival
+fw = 12;
+}
+var zombie = document.getElementById("tableZombie");
+var spider = document.getElementById("tableSpider");
+var skeleton = document.getElementById("tableSkeleton");
+var pigmen = document.getElementById("tablePigmen");
+var creeper = document.getElementById("tableCreeper");
+var silverfish = document.getElementById("tableSilverfish");
+var blaze = document.getElementById("tableBlaze");
+var witch = document.getElementById("tableWitch");
+var slime = document.getElementById("tableSlime");
+var giant = document.getElementById("tableGiant");
+zombie.rows[1].cells[3].innerHTML = zombie.rows[1].cells[2].innerHTML * fw;
+zombie.rows[1].cells[6].innerHTML = zombie.rows[1].cells[5].innerHTML * fw;
+zombie.rows[2].cells[3].innerHTML = zombie.rows[2].cells[2].innerHTML * fw;
+zombie.rows[2].cells[6].innerHTML = zombie.rows[2].cells[5].innerHTML * fw;
+zombie.rows[3].cells[3].innerHTML = zombie.rows[3].cells[2].innerHTML * fw;
+zombie.rows[3].cells[6].innerHTML = zombie.rows[3].cells[5].innerHTML * fw;
+zombie.rows[4].cells[3].innerHTML = zombie.rows[4].cells[2].innerHTML * fw;
+zombie.rows[4].cells[6].innerHTML = zombie.rows[4].cells[5].innerHTML * fw;
+zombie.rows[5].cells[3].innerHTML = zombie.rows[5].cells[2].innerHTML * fw;
+zombie.rows[5].cells[6].innerHTML = zombie.rows[5].cells[5].innerHTML * fw;
+spider.rows[1].cells[3].innerHTML = spider.rows[1].cells[2].innerHTML * fw;
+spider.rows[1].cells[6].innerHTML = spider.rows[1].cells[5].innerHTML * fw;
+spider.rows[2].cells[3].innerHTML = spider.rows[2].cells[2].innerHTML * fw;
+spider.rows[2].cells[6].innerHTML = spider.rows[2].cells[5].innerHTML * fw;
+spider.rows[3].cells[3].innerHTML = spider.rows[3].cells[2].innerHTML * fw;
+spider.rows[3].cells[6].innerHTML = spider.rows[3].cells[5].innerHTML * fw;
+spider.rows[4].cells[3].innerHTML = spider.rows[4].cells[2].innerHTML * fw;
+spider.rows[4].cells[6].innerHTML = spider.rows[4].cells[5].innerHTML * fw;
+spider.rows[5].cells[3].innerHTML = spider.rows[5].cells[2].innerHTML * fw;
+spider.rows[5].cells[6].innerHTML = spider.rows[5].cells[5].innerHTML * fw;
+skeleton.rows[1].cells[3].innerHTML = skeleton.rows[1].cells[2].innerHTML * fw;
+skeleton.rows[1].cells[6].innerHTML = skeleton.rows[1].cells[5].innerHTML * fw;
+skeleton.rows[2].cells[3].innerHTML = skeleton.rows[2].cells[2].innerHTML * fw;
+skeleton.rows[2].cells[6].innerHTML = skeleton.rows[2].cells[5].innerHTML * fw;
+skeleton.rows[3].cells[3].innerHTML = skeleton.rows[3].cells[2].innerHTML * fw;
+skeleton.rows[3].cells[6].innerHTML = skeleton.rows[3].cells[5].innerHTML * fw;
+skeleton.rows[4].cells[3].innerHTML = skeleton.rows[4].cells[2].innerHTML * fw;
+skeleton.rows[4].cells[6].innerHTML = skeleton.rows[4].cells[5].innerHTML * fw;
+skeleton.rows[5].cells[3].innerHTML = skeleton.rows[5].cells[2].innerHTML * fw;
+skeleton.rows[5].cells[6].innerHTML = skeleton.rows[5].cells[5].innerHTML * fw;
+pigmen.rows[1].cells[3].innerHTML = pigmen.rows[1].cells[2].innerHTML * fw;
+pigmen.rows[1].cells[6].innerHTML = pigmen.rows[1].cells[5].innerHTML * fw;
+pigmen.rows[2].cells[3].innerHTML = pigmen.rows[2].cells[2].innerHTML * fw;
+pigmen.rows[2].cells[6].innerHTML = pigmen.rows[2].cells[5].innerHTML * fw;
+pigmen.rows[3].cells[3].innerHTML = pigmen.rows[3].cells[2].innerHTML * fw;
+pigmen.rows[3].cells[6].innerHTML = pigmen.rows[3].cells[5].innerHTML * fw;
+pigmen.rows[4].cells[3].innerHTML = pigmen.rows[4].cells[2].innerHTML * fw;
+pigmen.rows[4].cells[6].innerHTML = pigmen.rows[4].cells[5].innerHTML * fw;
+pigmen.rows[5].cells[3].innerHTML = pigmen.rows[5].cells[2].innerHTML * fw;
+pigmen.rows[5].cells[6].innerHTML = pigmen.rows[5].cells[5].innerHTML * fw;
+creeper.rows[1].cells[3].innerHTML = creeper.rows[1].cells[2].innerHTML * fw;
+creeper.rows[1].cells[6].innerHTML = creeper.rows[1].cells[5].innerHTML * fw;
+creeper.rows[2].cells[3].innerHTML = creeper.rows[2].cells[2].innerHTML * fw;
+creeper.rows[2].cells[6].innerHTML = creeper.rows[2].cells[5].innerHTML * fw;
+creeper.rows[3].cells[3].innerHTML = creeper.rows[3].cells[2].innerHTML * fw;
+creeper.rows[3].cells[6].innerHTML = creeper.rows[3].cells[5].innerHTML * fw;
+creeper.rows[4].cells[3].innerHTML = creeper.rows[4].cells[2].innerHTML * fw;
+creeper.rows[4].cells[6].innerHTML = creeper.rows[4].cells[5].innerHTML * fw;
+creeper.rows[5].cells[3].innerHTML = creeper.rows[5].cells[2].innerHTML * fw;
+creeper.rows[5].cells[6].innerHTML = creeper.rows[5].cells[5].innerHTML * fw;
+silverfish.rows[1].cells[3].innerHTML = silverfish.rows[1].cells[2].innerHTML * fw;
+silverfish.rows[1].cells[6].innerHTML = silverfish.rows[1].cells[5].innerHTML * fw;
+silverfish.rows[2].cells[3].innerHTML = silverfish.rows[2].cells[2].innerHTML * fw;
+silverfish.rows[2].cells[6].innerHTML = silverfish.rows[2].cells[5].innerHTML * fw;
+silverfish.rows[3].cells[3].innerHTML = silverfish.rows[3].cells[2].innerHTML * fw;
+silverfish.rows[3].cells[6].innerHTML = silverfish.rows[3].cells[5].innerHTML * fw;
+silverfish.rows[4].cells[3].innerHTML = silverfish.rows[4].cells[2].innerHTML * fw;
+silverfish.rows[4].cells[6].innerHTML = silverfish.rows[4].cells[5].innerHTML * fw;
+silverfish.rows[5].cells[3].innerHTML = silverfish.rows[5].cells[2].innerHTML * fw;
+silverfish.rows[5].cells[6].innerHTML = silverfish.rows[5].cells[5].innerHTML * fw;
+blaze.rows[1].cells[3].innerHTML = blaze.rows[1].cells[2].innerHTML * fw;
+blaze.rows[1].cells[6].innerHTML = blaze.rows[1].cells[5].innerHTML * fw;
+blaze.rows[2].cells[3].innerHTML = blaze.rows[2].cells[2].innerHTML * fw;
+blaze.rows[2].cells[6].innerHTML = blaze.rows[2].cells[5].innerHTML * fw;
+blaze.rows[3].cells[3].innerHTML = blaze.rows[3].cells[2].innerHTML * fw;
+blaze.rows[3].cells[6].innerHTML = blaze.rows[3].cells[5].innerHTML * fw;
+blaze.rows[4].cells[3].innerHTML = blaze.rows[4].cells[2].innerHTML * fw;
+blaze.rows[4].cells[6].innerHTML = blaze.rows[4].cells[5].innerHTML * fw;
+blaze.rows[5].cells[3].innerHTML = blaze.rows[5].cells[2].innerHTML * fw;
+blaze.rows[5].cells[6].innerHTML = blaze.rows[5].cells[5].innerHTML * fw;
+witch.rows[1].cells[3].innerHTML = witch.rows[1].cells[2].innerHTML * fw;
+witch.rows[1].cells[6].innerHTML = witch.rows[1].cells[5].innerHTML * fw;
+witch.rows[2].cells[3].innerHTML = witch.rows[2].cells[2].innerHTML * fw;
+witch.rows[2].cells[6].innerHTML = witch.rows[2].cells[5].innerHTML * fw;
+witch.rows[3].cells[3].innerHTML = witch.rows[3].cells[2].innerHTML * fw;
+witch.rows[3].cells[6].innerHTML = witch.rows[3].cells[5].innerHTML * fw;
+witch.rows[4].cells[3].innerHTML = witch.rows[4].cells[2].innerHTML * fw;
+witch.rows[4].cells[6].innerHTML = witch.rows[4].cells[5].innerHTML * fw;
+witch.rows[5].cells[3].innerHTML = witch.rows[5].cells[2].innerHTML * fw;
+witch.rows[5].cells[6].innerHTML = witch.rows[5].cells[5].innerHTML * fw;
+slime.rows[1].cells[3].innerHTML = slime.rows[1].cells[2].innerHTML * fw;
+slime.rows[1].cells[6].innerHTML = slime.rows[1].cells[5].innerHTML * fw;
+slime.rows[2].cells[3].innerHTML = slime.rows[2].cells[2].innerHTML * fw;
+slime.rows[2].cells[6].innerHTML = slime.rows[2].cells[5].innerHTML * fw;
+slime.rows[3].cells[3].innerHTML = slime.rows[3].cells[2].innerHTML * fw;
+slime.rows[3].cells[6].innerHTML = slime.rows[3].cells[5].innerHTML * fw;
+slime.rows[4].cells[3].innerHTML = slime.rows[4].cells[2].innerHTML * fw;
+slime.rows[4].cells[6].innerHTML = slime.rows[4].cells[5].innerHTML * fw;
+slime.rows[5].cells[3].innerHTML = slime.rows[5].cells[2].innerHTML * fw;
+slime.rows[5].cells[6].innerHTML = slime.rows[5].cells[5].innerHTML * fw;
+giant.rows[1].cells[3].innerHTML = giant.rows[1].cells[2].innerHTML * fw;
+giant.rows[1].cells[6].innerHTML = giant.rows[1].cells[5].innerHTML * fw;
+giant.rows[2].cells[3].innerHTML = giant.rows[2].cells[2].innerHTML * fw;
+giant.rows[2].cells[6].innerHTML = giant.rows[2].cells[5].innerHTML * fw;
+giant.rows[3].cells[3].innerHTML = giant.rows[3].cells[2].innerHTML * fw;
+giant.rows[3].cells[6].innerHTML = giant.rows[3].cells[5].innerHTML * fw;
+giant.rows[4].cells[3].innerHTML = giant.rows[4].cells[2].innerHTML * fw;
+giant.rows[4].cells[6].innerHTML = giant.rows[4].cells[5].innerHTML * fw;
+giant.rows[5].cells[3].innerHTML = giant.rows[5].cells[2].innerHTML * fw;
+giant.rows[5].cells[6].innerHTML = giant.rows[5].cells[5].innerHTML * fw;
+}
+</script>
+<script src="/Users/Lai/Documents/doubleIncome_1.04.js"></script>
+<script src="/Users/Lai/Documents/survivalMode_1.04.js"></script>
+</body>
+</html>
